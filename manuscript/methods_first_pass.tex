@@ -1,0 +1,45 @@
+% ************************************************************
+% METHODS: FIRST-PASS RAPID SECONDARY-DATA INDEX
+% ************************************************************
+\section{Methods}
+
+\subsection{Study Design}
+
+This study used a rapid secondary-data public-health systems design to develop a first-pass WASH--health priority index for Gaza. The analysis was structured as a reproducible prioritization exercise using publicly accessible humanitarian reporting, WASH indicators, health-system capacity signals, and geospatially relevant public data sources. The index was designed to identify convergence across risk domains rather than to estimate causal effects or individual-level disease burden.
+
+\subsection{Setting and Unit of Analysis}
+
+The setting was the Gaza Strip. The first-pass analysis used three analytic strata: the Gaza Strip aggregate, Khan Younis as an area-specific stratum, and assessed displacement sites as a site-aggregate stratum. These strata were selected because the public reporting available at this stage supported Gaza-wide and displacement-site extraction, with one area-specific severe sewage and wastewater signal identified for Khan Younis. Subsequent analysis should replace aggregate strata with smaller administrative, municipal, displacement-site, or facility-catchment units when verified public geospatial data are available.
+
+\subsection{Source Eligibility}
+
+Sources were eligible for first-pass extraction when they met four criteria. The source had to be publicly accessible, attributable to a recognized humanitarian or health-system reporting body, date-stamped or otherwise time-bounded, and relevant to at least one index domain. Restricted partner dashboards, private records, individual patient data, unverified dashboard screenshots, and values without clear source provenance were excluded. Candidate source classes included OCHA humanitarian situation reports, OCHA public data resources, WASH Cluster resources, WHO or Health Cluster dashboards, and HDX geospatial datasets.
+
+\subsection{Indicator Extraction}
+
+Indicators were extracted into a structured source table recording source identity, URL, source date, access date, geography, indicator name, raw value or text, standardized value, assigned score, scoring justification, source location, verification status, and notes. Extracted values were treated as public-health risk signals. Site-level reports were not converted into individual-level incidence estimates. Narrative indicators were coded only when the source language clearly supported the domain assignment.
+
+\subsection{Index Domains}
+
+The first-pass priority index included five domains: WASH service stress, environmental-health hazard burden, health-system access constraint, population vulnerability, and operational access constraint. WASH service stress captured water, sanitation, hygiene, or solid-waste service disruption. Environmental-health hazard burden captured sewage exposure, solid waste, pests, flooding, stagnant water, and related conditions. Health-system access constraint captured limited access to functional or specialized health services. Population vulnerability captured displacement, overcrowding, and exposure among vulnerable groups when public reporting supported coding. Operational access constraint captured restrictions, fuel or electricity limitations, equipment shortages, infrastructure damage, and other conditions affecting service continuity.
+
+\subsection{Scoring}
+
+Each domain was scored from 0 to 2. A score of 0 indicated low stress, absence of a reported signal, or insufficient evidence for domain stress. A score of 1 indicated moderate stress or a reported but non-majority signal. A score of 2 indicated severe stress, widespread reporting, majority-site reporting, or clear source language indicating major service disruption. Domain scores were summed to produce a total priority score ranging from 0 to 10.
+
+Priority classes were assigned as follows: scores from 0 to 3 were classified as lower priority, scores from 4 to 6 as moderate priority, and scores from 7 to 10 as high priority. These classes were used for rapid public-health prioritization and should not be interpreted as clinical severity categories or causal estimates.
+
+\subsection{Sensitivity Analysis}
+
+Sensitivity analysis compared the equal-weight index with two alternative weighting specifications. The WASH-weighted specification doubled the WASH service-stress domain. The health-access-weighted specification doubled the health-system access-constraint domain. Priority classification was considered stable when an analytic stratum remained in the same priority class across all three specifications.
+
+\subsection{Reproducibility}
+
+The repository stores source inventory files, indicator crosswalks, manual extraction templates, scoring tables, R scripts, and manuscript table fragments as discrete objects. The source inventory and indicator crosswalk are validated before scoring. The scoring script computes total priority scores from the five domain values, and the sensitivity script compares alternate weighting specifications. Manual extraction remains auditable through the extraction table, which preserves raw values, standardized values, scoring justification, source date, access date, and verification status.
+
+\subsection{Limitations of the First-Pass Methods}
+
+The first-pass design relies on secondary public reporting and does not include individual-level health records, household surveys, direct environmental sampling, or restricted partner datasets. The current strata are aggregate or semi-aggregate, and some domain scores reflect Gaza-wide constraints rather than fully area-specific measurements. Dashboard-derived values require stable export, date-stamped capture, or field documentation before they can be used as manuscript-weighted evidence. The index is therefore best understood as a transparent decision-support and hypothesis-generation tool pending additional WHO, WASH Cluster, and HDX validation.
+% ************************************************************
+% END METHODS: FIRST-PASS RAPID SECONDARY-DATA INDEX
+% ************************************************************
