@@ -1,0 +1,57 @@
+% ************************************************************
+% GAZA WASH--HEALTH PRIORITY INDEX MANUSCRIPT SHELL
+% ************************************************************
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{natbib}
+
+\doublespacing
+
+\title{Rapid Public-Health Risk Stratification for WASH Recovery in Gaza Using Open Humanitarian Data}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\noindent Background: Gaza's WASH and health systems have faced concurrent service disruption, environmental-health hazards, displacement pressure, and constrained service continuity. Objective: This study develops a rapid public-data priority index to identify where WASH disruption and health-system constraints converge. Methods: Public humanitarian reporting was extracted into five domains: WASH service stress, environmental-health hazard burden, health-system access constraint, population vulnerability, and operational access constraint. Each domain was scored from 0 to 2 and summed into a 0--10 priority index. Sensitivity analysis compared equal-weight, WASH-weighted, and health-access-weighted specifications. Results: The Gaza Strip aggregate, Khan Younis, and assessed displacement sites were classified as high priority in the first-pass index. Priority classifications remained stable across sensitivity specifications. Conclusions: Public humanitarian data can support transparent rapid WASH--health prioritization, but additional WHO, WASH Cluster, and HDX validation is needed before final submission.
+\end{abstract}
+
+\section{Introduction}
+
+WASH disruption in Gaza is a public-health systems problem involving water access, sanitation, environmental exposure, displacement, health-service access, and operational continuity. In settings where primary data collection is infeasible or unsafe, public humanitarian reporting can support rapid prioritization if extraction rules, scoring assumptions, and evidence limits are explicit. This manuscript shell presents a first-pass secondary-data index intended for refinement through verified WHO, WASH Cluster, OCHA, and HDX data layers.
+
+\input{methods_first_pass.tex}
+
+\input{tables/table3_priority_index.tex}
+
+\input{tables/table4_sensitivity_analysis.tex}
+
+\input{results_first_pass.tex}
+
+\section{Discussion}
+
+The first-pass index classified all analytic strata as high priority, reflecting convergence across WASH service stress, environmental-health hazards, health-system constraints, population vulnerability, and operational constraints. The stability of classifications across weighting specifications suggests that the result is not dependent on a single scoring assumption. The most defensible interpretation is that the available public data identify clear areas for follow-up validation and recovery-prioritization analysis.
+
+This framework is aligned with health-equity and health-systems research because it focuses on variation in exposure, service access, and recovery need. Its practical value lies in converting fragmented public reporting into an auditable prioritization structure that can be updated as more precise geospatial, facility-functionality, and WASH dashboard data become available.
+
+\section{Limitations}
+
+This first-pass analysis uses secondary public reporting and does not estimate individual-level disease incidence, mortality, or causal effects. The Gaza Strip and displacement-site rows are aggregate strata. The Khan Younis row is supported by area-specific wastewater evidence, but some domains still rely on Gaza-wide contextual constraints pending further source validation. Dashboard data should not be incorporated into final tables unless exact dates, variable definitions, and extraction methods are preserved.
+
+\section{Conclusion}
+
+A rapid public-data WASH--health index can identify convergence between WASH disruption, environmental-health hazards, population vulnerability, and constrained service access in Gaza. The current results support continued development of a reproducible public-health intelligence framework using verified humanitarian and geospatial data.
+
+\end{document}
+% ************************************************************
+% END GAZA WASH--HEALTH PRIORITY INDEX MANUSCRIPT SHELL
+% ************************************************************
