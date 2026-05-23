@@ -1,0 +1,2 @@
+area_id,area_name,geography_type,score_date,wash_service_stress,environmental_health_hazard,health_system_access_constraint,population_vulnerability,operational_access_constraint,total_priority_score,priority_class,source_count,verification_status,notes
+area_001,,admin_area,,,,,,,,,,pending,
