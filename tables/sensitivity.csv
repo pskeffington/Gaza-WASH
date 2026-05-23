@@ -1,0 +1,4 @@
+area_id,area_name,equal_weight_score,equal_weight_class,wash_weighted_score,wash_weighted_class,health_access_weighted_score,health_access_weighted_class,classification_stable,notes
+gaza_strip,Gaza Strip,10,high_priority,12,high_priority,12,high_priority,yes,"High priority across equal-weight, WASH-weighted, and health-access-weighted specifications."
+khan_younis,Khan Younis,10,high_priority,12,high_priority,12,high_priority,yes,"High priority across specifications; area-specific sewage flooding signal supports environmental-health severity."
+displacement_sites,Assessed displacement sites,8,high_priority,10,high_priority,9,high_priority,yes,"High priority across specifications using conservative health-access and operational-access scores."
