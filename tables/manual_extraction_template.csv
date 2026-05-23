@@ -1,0 +1,2 @@
+extraction_id,source_id,source_name,source_url,source_date,access_date,geography,indicator_id,indicator_name,raw_text_or_value,standardized_value,score,score_justification,page_or_location,extractor,verification_status,notes
+ex_0001,,,,,,,,,,,,,,,pending,
