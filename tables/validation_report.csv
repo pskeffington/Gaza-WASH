@@ -1,7 +1,22 @@
-check,value,status
-extraction_rows,12,pass
-unique_extraction_ids,12,pass
-unverified_or_pending_extraction_rows,0,pass
-index_rows,3,pass
-index_totals_recalculated,pass,pass
-priority_classes_valid,pass,pass
+check,status,detail
+source_inventory_columns,pass,15 cols
+source_inventory_rows,pass,6 rows
+source_inventory_unique_ids,pass,6 unique
+source_inventory_urls_present,pass,6/6 URLs
+indicator_crosswalk_columns,pass,15 cols
+indicator_crosswalk_rows,pass,10 rows
+indicator_crosswalk_unique_ids,pass,10 unique
+indicator_domains_valid,pass,[]
+indicator_score_values_valid,pass,['0;1;2']
+index_score_columns,pass,14 cols
+index_score_rows,pass,3 rows
+index_score_unique_area_ids,pass,3 unique
+index_domain_scores_0_2,pass,"all domain scores in 0,1,2"
+index_totals_match_domains,pass,"[10, 10, 8]"
+index_priority_classes_valid,pass,['high_priority']
+sensitivity_columns,pass,20 cols
+sensitivity_rows_match_index,pass,3 vs 3
+sensitivity_area_alignment,pass,3 matched
+sensitivity_equal_weight_matches_total,pass,"gaza_strip=10; khan_younis=10; displacement_sites=8"
+sensitivity_wash_weighted_correct,pass,"gaza_strip=12; khan_younis=12; displacement_sites=10"
+sensitivity_health_weighted_correct,pass,"gaza_strip=12; khan_younis=12; displacement_sites=9"
