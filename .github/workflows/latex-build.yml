@@ -1,0 +1,30 @@
+name: LaTeX build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Compile manuscript
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: manuscript/gaza_wash_health_index.tex
+          working_directory: .
+
+      - name: Upload manuscript PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: gaza-wash-health-index-pdf
+          path: manuscript/gaza_wash_health_index.pdf
