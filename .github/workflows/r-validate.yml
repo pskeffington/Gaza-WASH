@@ -24,7 +24,7 @@ jobs:
 
       - name: Install R packages
         run: |
-          Rscript -e "install.packages(c('readr', 'dplyr', 'janitor'), repos = 'https://cloud.r-project.org')"
+          Rscript -e "install.packages(c('readr', 'dplyr', 'janitor', 'tibble'), repos = 'https://cloud.r-project.org')"
 
       - name: Validate source inventory
         run: Rscript scripts/01_build_source_inventory.R
@@ -38,6 +38,9 @@ jobs:
       - name: Run sensitivity analysis template
         run: Rscript scripts/04_sensitivity_analysis.R
 
+      - name: Validate extraction and score consistency
+        run: Rscript scripts/06_validate_extraction_and_scores.R
+
       - name: Upload generated tables
         uses: actions/upload-artifact@v4
         with:
@@ -47,3 +50,4 @@ jobs:
             tables/indicator_crosswalk_validated.csv
             tables/index_scores.csv
             tables/index_sensitivity_scores.csv
+            tables/validation_report.csv
