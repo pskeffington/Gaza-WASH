@@ -1,0 +1,29 @@
+name: Validate assessments
+
+on:
+  push:
+    paths:
+      - 'assessments/**'
+      - 'scripts/validate_assessments.py'
+      - '.github/workflows/validate_assessments.yml'
+  pull_request:
+    paths:
+      - 'assessments/**'
+      - 'scripts/validate_assessments.py'
+      - '.github/workflows/validate_assessments.yml'
+  workflow_dispatch:
+
+jobs:
+  validate-assessments:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate assessment metadata
+        run: python scripts/validate_assessments.py
