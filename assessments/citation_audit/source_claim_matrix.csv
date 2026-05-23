@@ -1,0 +1,9 @@
+claim_id,claim_text,source_id,claim_weight,allowed_status,scope_note,manuscript_section,status
+C001,Household WASH access and service conditions show severe stress within the assessed Gaza household frame,GJWASH_2025_08,high,allowed,Limit wording to the source assessment frame,Results,pending_exact_page
+C002,Al Mawasi 7 provides local evidence of concentrated WASH and displacement-related stress,ALMAWASI7_EA32,medium,allowed_local_only,Name the enumeration area and avoid Gaza-wide language,Results or case illustration,pending_exact_page
+C003,As Sawarah provides local evidence of concentrated WASH and displacement-related stress,ASSAWARAH_EA8,medium,allowed_local_only,Name the enumeration area and avoid Gaza-wide language,Results or case illustration,pending_exact_page
+C004,Light-touch monitoring reports can support time-stamped directional WASH trend language,LTM_2025_04_R3,medium,allowed_indicative_only,Use assessed-frame language only,Background or Results,pending_exact_page
+C005,Light-touch monitoring reports can support time-stamped directional WASH trend language,LTM_2025_06_R4,medium,allowed_indicative_only,Use assessed-frame language only,Background or Results,pending_exact_page
+C006,RDNA supports infrastructure damage service disruption and recovery-context claims,RDNA_2025_02,high,allowed_context,Do not use as household outcome survey,Background or Discussion,pending_exact_page
+C007,Limited safe-water access creates plausible environmental-health mechanisms for waterborne disease risk,HEALTH_WATER_GAZA,low,allowed_background_only,Mechanism only not current field validation,Background,pending_exact_page
+C008,Shelter-WASH-FSS IDP source supports Gaza-specific claims,SHELTER_WASH_FSS_IDP_2025_07,none,blocked_pending_scope,Do not use until project geography is confirmed,None,blocked
