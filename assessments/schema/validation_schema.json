@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Gaza WASH assessment manifest schema",
+  "type": "object",
+  "required": [
+    "source_id",
+    "title",
+    "geography",
+    "reporting_period",
+    "source_organization",
+    "path_or_url",
+    "original_or_derived",
+    "validation_status",
+    "validator_role",
+    "manuscript_role",
+    "use_limitation"
+  ],
+  "properties": {
+    "source_id": {"type": "string", "minLength": 3},
+    "title": {"type": "string", "minLength": 3},
+    "geography": {"type": "string", "minLength": 3},
+    "reporting_period": {"type": "string", "minLength": 3},
+    "source_organization": {"type": "string", "minLength": 3},
+    "path_or_url": {"type": "string", "minLength": 3},
+    "original_or_derived": {
+      "type": "string",
+      "enum": ["original", "secondary", "derived", "unknown"]
+    },
+    "validation_status": {
+      "type": "string",
+      "enum": [
+        "primary_verified",
+        "primary_verified_pending_file",
+        "trend_verified",
+        "trend_verified_pending_file",
+        "context_verified",
+        "context_verified_pending_file",
+        "background_only",
+        "background_only_pending_file",
+        "restricted_pending_geography",
+        "excluded",
+        "unverified"
+      ]
+    },
+    "validator_role": {
+      "type": "string",
+      "enum": [
+        "core_household_validator",
+        "local_hotspot_validator",
+        "indicative_trend_validator",
+        "infrastructure_recovery_validator",
+        "background_mechanism_validator",
+        "excluded_or_restricted"
+      ]
+    },
+    "manuscript_role": {"type": "string", "minLength": 3},
+    "use_limitation": {"type": "string", "minLength": 3}
+  },
+  "additionalProperties": false
+}
