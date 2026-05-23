@@ -1,0 +1,49 @@
+name: R validation
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: 'release'
+
+      - name: Install R packages
+        run: |
+          Rscript -e "install.packages(c('readr', 'dplyr', 'janitor'), repos = 'https://cloud.r-project.org')"
+
+      - name: Validate source inventory
+        run: Rscript scripts/01_build_source_inventory.R
+
+      - name: Validate indicator crosswalk
+        run: Rscript scripts/02_validate_indicator_crosswalk.R
+
+      - name: Score priority index template
+        run: Rscript scripts/03_score_priority_index.R
+
+      - name: Run sensitivity analysis template
+        run: Rscript scripts/04_sensitivity_analysis.R
+
+      - name: Upload generated tables
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-validation-tables
+          path: |
+            tables/source_inventory_validated.csv
+            tables/indicator_crosswalk_validated.csv
+            tables/index_scores.csv
+            tables/index_sensitivity_scores.csv
