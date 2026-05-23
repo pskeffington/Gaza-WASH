@@ -1,0 +1,7 @@
+check,value,status
+extraction_rows,12,pass
+unique_extraction_ids,12,pass
+unverified_or_pending_extraction_rows,0,pass
+index_rows,3,pass
+index_totals_recalculated,pass,pass
+priority_classes_valid,pass,pass
