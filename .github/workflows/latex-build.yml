@@ -20,8 +20,8 @@ jobs:
       - name: Compile manuscript
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: manuscript/gaza_wash_health_index.tex
-          working_directory: .
+          root_file: gaza_wash_health_index.tex
+          working_directory: manuscript
 
       - name: Upload manuscript PDF
         uses: actions/upload-artifact@v4
