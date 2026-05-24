@@ -1,7 +1,7 @@
 #!/usr/bin/env Rscript
 
 # Validate manuscript-facing tabular artifacts for the Gaza WASH project.
-# Scope: file presence, CSV readability, schema, primary keys, joins, and controlled values.
+# Scope: file presence, CSV readability, schema, primary keys, joins, controlled values, and source-binding gates.
 
 fail <- function(...) stop(paste(...), call. = FALSE)
 
@@ -11,6 +11,7 @@ required_paths <- c(
   "assessments/manifest.csv",
   "assessments/citation_audit/source_claim_matrix.csv",
   "assessments/citation_audit/official_source_trace.csv",
+  "assessments/citation_audit/source_binding_status.csv",
   "manuscript/main.tex",
   "manuscript/sections/01_introduction.tex",
   "manuscript/sections/02_methods.tex",
@@ -63,9 +64,15 @@ trace_names <- c(
   "verification_task", "status", "notes"
 )
 
+binding_names <- c(
+  "source_id", "expected_path", "local_file_status", "public_record_status",
+  "page_binding_status", "manuscript_gate", "next_action"
+)
+
 manifest <- read_checked_csv("assessments/manifest.csv", manifest_names)
 claims <- read_checked_csv("assessments/citation_audit/source_claim_matrix.csv", claim_names)
 trace <- read_checked_csv("assessments/citation_audit/official_source_trace.csv", trace_names)
+binding <- read_checked_csv("assessments/citation_audit/source_binding_status.csv", binding_names)
 
 assert_unique <- function(x, column, frame_name) {
   dup <- x[[column]][duplicated(x[[column]])]
@@ -84,6 +91,7 @@ assert_allowed <- function(x, column, allowed, frame_name) {
 assert_unique(manifest, "source_id", "manifest")
 assert_unique(claims, "claim_id", "source_claim_matrix")
 assert_unique(trace, "trace_id", "official_source_trace")
+assert_unique(binding, "source_id", "source_binding_status")
 
 assert_allowed(manifest, "original_or_derived", c("original", "secondary", "derived", "unknown"), "manifest")
 assert_allowed(
@@ -115,28 +123,29 @@ assert_allowed(
   "source_claim_matrix"
 )
 assert_allowed(trace, "status", c("pending", "pending_blocked", "verified", "blocked", "needs_revision"), "official_source_trace")
+assert_allowed(binding, "local_file_status", c("present", "missing", "unknown_not_checked"), "source_binding_status")
+assert_allowed(binding, "public_record_status", c("verified", "secondary_record_found", "not_located", "scope_unresolved"), "source_binding_status")
+assert_allowed(binding, "page_binding_status", c("bound", "blocked", "not_required"), "source_binding_status")
+assert_allowed(
+  binding,
+  "manuscript_gate",
+  c("allowed", "do_not_promote_claims", "context_only_pending_official_url", "do_not_cite", "excluded_pending_scope"),
+  "source_binding_status"
+)
 
-unknown_claim_sources <- setdiff(claims$source_id, manifest$source_id)
-if (length(unknown_claim_sources) > 0) {
-  fail("Claims reference unknown source_id(s):", paste(unknown_claim_sources, collapse = ", "))
+for (frame in list(claims = claims, trace = trace, binding = binding)) {
+  unknown <- setdiff(frame$source_id, manifest$source_id)
+  if (length(unknown) > 0) fail("Frame references unknown source_id(s):", paste(unknown, collapse = ", "))
 }
 
-unknown_trace_sources <- setdiff(trace$source_id, manifest$source_id)
-if (length(unknown_trace_sources) > 0) {
-  fail("Trace references unknown source_id(s):", paste(unknown_trace_sources, collapse = ", "))
-}
-
-missing_claim_sources <- setdiff(manifest$source_id, claims$source_id)
-if (length(missing_claim_sources) > 0) {
-  fail("Manifest source_id(s) missing from claim matrix:", paste(missing_claim_sources, collapse = ", "))
-}
-
-missing_trace_sources <- setdiff(manifest$source_id, trace$source_id)
-if (length(missing_trace_sources) > 0) {
-  fail("Manifest source_id(s) missing from official trace:", paste(missing_trace_sources, collapse = ", "))
+for (frame_name in c("claims", "trace", "binding")) {
+  frame <- get(frame_name)
+  missing_source <- setdiff(manifest$source_id, frame$source_id)
+  if (length(missing_source) > 0) fail("Manifest source_id(s) missing from", frame_name, paste(missing_source, collapse = ", "))
 }
 
 joined <- merge(claims, manifest[, c("source_id", "validator_role", "validation_status")], by = "source_id")
+joined <- merge(joined, binding[, c("source_id", "page_binding_status", "manuscript_gate")], by = "source_id")
 
 bad_local <- joined$validator_role == "local_hotspot_validator" & joined$allowed_status != "allowed_local_only"
 if (any(bad_local)) fail("Local hotspot claim(s) must be allowed_local_only:", paste(joined$claim_id[bad_local], collapse = ", "))
@@ -150,12 +159,17 @@ if (any(bad_background)) fail("Background claim(s) cannot carry high weight:", p
 bad_restricted <- joined$validator_role == "excluded_or_restricted" & joined$allowed_status != "blocked_pending_scope"
 if (any(bad_restricted)) fail("Restricted claim(s) must remain blocked_pending_scope:", paste(joined$claim_id[bad_restricted], collapse = ", "))
 
+bad_promoted <- joined$page_binding_status != "bound" & joined$status == "ready_for_manuscript"
+if (any(bad_promoted)) fail("Unbound claim(s) marked ready_for_manuscript:", paste(joined$claim_id[bad_promoted], collapse = ", "))
+
 path_ok <- grepl("^assessments/", manifest$path_or_url) | grepl("^https?://", manifest$path_or_url)
-if (any(!path_ok)) {
-  fail("Manifest path_or_url outside assessments/ or URL:", paste(manifest$source_id[!path_ok], collapse = ", "))
-}
+if (any(!path_ok)) fail("Manifest path_or_url outside assessments/ or URL:", paste(manifest$source_id[!path_ok], collapse = ", "))
+
+binding_path_ok <- grepl("^assessments/", binding$expected_path) | binding$expected_path == "not_applicable"
+if (any(!binding_path_ok)) fail("Binding expected_path outside assessments/:", paste(binding$source_id[!binding_path_ok], collapse = ", "))
 
 message("Data-frame validation passed.")
 message("Manifest sources checked: ", nrow(manifest))
 message("Claim rows checked: ", nrow(claims))
 message("Official trace rows checked: ", nrow(trace))
+message("Source binding rows checked: ", nrow(binding))
