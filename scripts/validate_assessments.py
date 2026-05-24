@@ -2,9 +2,9 @@
 """Validate the Gaza WASH assessment evidence-control layer.
 
 This script checks manifest structure, controlled vocabularies, source-claim mappings,
-source-binding gates, official trace records, and restricted-source handling.
-It can run without local PDF files by default. Use --strict-files to require local
-source document paths to exist.
+source-binding gates, official trace records, locator results, page-binding notes,
+and restricted-source handling. It can run without local PDF files by default.
+Use --strict-files to require local source document paths to exist.
 """
 
 from __future__ import annotations
@@ -16,17 +16,20 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 ASSESSMENTS = ROOT / "assessments"
+CITATION_AUDIT = ASSESSMENTS / "citation_audit"
 MANIFEST = ASSESSMENTS / "manifest.csv"
-SOURCE_CLAIM_MATRIX = ASSESSMENTS / "citation_audit" / "source_claim_matrix.csv"
-OFFICIAL_TRACE = ASSESSMENTS / "citation_audit" / "official_source_trace.csv"
-SOURCE_BINDING_STATUS = ASSESSMENTS / "citation_audit" / "source_binding_status.csv"
+SOURCE_CLAIM_MATRIX = CITATION_AUDIT / "source_claim_matrix.csv"
+OFFICIAL_TRACE = CITATION_AUDIT / "official_source_trace.csv"
+SOURCE_BINDING_STATUS = CITATION_AUDIT / "source_binding_status.csv"
+SOURCE_LOCATOR_RESULTS = CITATION_AUDIT / "source_locator_results.csv"
+PAGE_BINDING_NOTES = CITATION_AUDIT / "page_binding_notes.csv"
 EXCLUSION_LOG = ASSESSMENTS / "validation_notes" / "exclusion_log.md"
 
 REQUIRED_DIRS = [
     ASSESSMENTS,
     ASSESSMENTS / "schema",
     ASSESSMENTS / "validation_notes",
-    ASSESSMENTS / "citation_audit",
+    CITATION_AUDIT,
 ]
 
 MANIFEST_FIELDS = [
@@ -72,6 +75,26 @@ SOURCE_BINDING_FIELDS = [
     "page_binding_status",
     "manuscript_gate",
     "next_action",
+]
+
+SOURCE_LOCATOR_FIELDS = [
+    "locator_id",
+    "target_source_id",
+    "query_focus",
+    "result_type",
+    "candidate_title",
+    "candidate_url",
+    "candidate_role",
+    "verification_status",
+    "notes",
+]
+
+PAGE_BINDING_FIELDS = [
+    "source_id",
+    "claim_id",
+    "page_range",
+    "binding_note",
+    "allowed_use",
 ]
 
 ORIGINAL_OR_DERIVED = {"original", "secondary", "derived", "unknown"}
@@ -120,6 +143,10 @@ MANUSCRIPT_GATES = {
     "do_not_cite",
     "excluded_pending_scope",
 }
+LOCATOR_RESULT_TYPES = {"official_match", "secondary_match", "official_context", "secondary_context", "no_exact_match"}
+LOCATOR_STATUSES = {"located_official", "located_secondary", "located_secondary_only", "not_located", "scope_unresolved"}
+SUPPLEMENTAL_PAGE_BINDING_SOURCES = {"SUPP_WATER_CONFLICT_OFORI_2025"}
+SUPPLEMENTAL_PAGE_BINDING_CLAIMS = {"none"}
 
 
 def read_csv(path: Path, required_fields: list[str]) -> list[dict[str, str]]:
@@ -158,7 +185,15 @@ def validate_required_objects() -> list[str]:
     for d in REQUIRED_DIRS:
         if not d.exists():
             errors.append(f"missing required directory: {d.relative_to(ROOT)}")
-    for f in [MANIFEST, SOURCE_CLAIM_MATRIX, OFFICIAL_TRACE, SOURCE_BINDING_STATUS, EXCLUSION_LOG]:
+    for f in [
+        MANIFEST,
+        SOURCE_CLAIM_MATRIX,
+        OFFICIAL_TRACE,
+        SOURCE_BINDING_STATUS,
+        SOURCE_LOCATOR_RESULTS,
+        PAGE_BINDING_NOTES,
+        EXCLUSION_LOG,
+    ]:
         if not f.exists():
             errors.append(f"missing required file: {f.relative_to(ROOT)}")
     return errors
@@ -292,6 +327,55 @@ def validate_source_binding(rows: list[dict[str, str]], manifest_sources: dict[s
     return errors
 
 
+def validate_locator_results(rows: list[dict[str, str]], manifest_sources: dict[str, dict[str, str]]) -> list[str]:
+    errors: list[str] = []
+    errors.extend(require_unique(rows, "locator_id", "locator results"))
+    for i, row in enumerate(rows, start=2):
+        for field in SOURCE_LOCATOR_FIELDS:
+            if not row[field].strip():
+                if row["verification_status"] in {"located_official", "located_secondary", "located_secondary_only"}:
+                    errors.append(f"locator row {i}: empty {field} for located source")
+        if row["target_source_id"] not in manifest_sources:
+            errors.append(f"locator row {i}: unknown target_source_id {row['target_source_id']}")
+        if row["result_type"] not in LOCATOR_RESULT_TYPES:
+            errors.append(f"locator row {i}: invalid result_type {row['result_type']}")
+        if row["verification_status"] not in LOCATOR_STATUSES:
+            errors.append(f"locator row {i}: invalid verification_status {row['verification_status']}")
+        if row["verification_status"] in {"located_official", "located_secondary", "located_secondary_only"}:
+            if not row["candidate_url"].startswith(("http://", "https://")):
+                errors.append(f"locator row {i}: located source requires candidate_url")
+    return errors
+
+
+def validate_page_binding_notes(
+    rows: list[dict[str, str]],
+    manifest_sources: dict[str, dict[str, str]],
+    claim_rows: list[dict[str, str]],
+    binding_rows: list[dict[str, str]],
+) -> list[str]:
+    errors: list[str] = []
+    claim_ids = {row["claim_id"] for row in claim_rows}
+    allowed_sources = set(manifest_sources) | SUPPLEMENTAL_PAGE_BINDING_SOURCES
+    allowed_claims = claim_ids | SUPPLEMENTAL_PAGE_BINDING_CLAIMS
+    page_claims = {row["claim_id"] for row in rows}
+
+    for i, row in enumerate(rows, start=2):
+        for field in PAGE_BINDING_FIELDS:
+            if not row[field].strip():
+                errors.append(f"page binding row {i}: empty {field}")
+        if row["source_id"] not in allowed_sources:
+            errors.append(f"page binding row {i}: unknown source_id {row['source_id']}")
+        if row["claim_id"] not in allowed_claims:
+            errors.append(f"page binding row {i}: unknown claim_id {row['claim_id']}")
+
+    bound_sources = {row["source_id"] for row in binding_rows if row["page_binding_status"] == "bound"}
+    bound_claims = {row["claim_id"] for row in claim_rows if row["source_id"] in bound_sources}
+    for claim_id in sorted(bound_claims - page_claims):
+        errors.append(f"bound claim missing page-binding note: {claim_id}")
+
+    return errors
+
+
 def ensure_full_source_coverage(
     manifest_rows: list[dict[str, str]],
     claim_rows: list[dict[str, str]],
@@ -324,19 +408,23 @@ def main() -> int:
 
     try:
         manifest_rows = read_csv(MANIFEST, MANIFEST_FIELDS)
-        source_rows = read_csv(SOURCE_CLAIM_MATRIX, SOURCE_CLAIM_FIELDS)
+        claim_rows = read_csv(SOURCE_CLAIM_MATRIX, SOURCE_CLAIM_FIELDS)
         trace_rows = read_csv(OFFICIAL_TRACE, OFFICIAL_TRACE_FIELDS)
         binding_rows = read_csv(SOURCE_BINDING_STATUS, SOURCE_BINDING_FIELDS)
+        locator_rows = read_csv(SOURCE_LOCATOR_RESULTS, SOURCE_LOCATOR_FIELDS)
+        page_binding_rows = read_csv(PAGE_BINDING_NOTES, PAGE_BINDING_FIELDS)
     except (FileNotFoundError, ValueError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 1
 
     manifest_sources = {row["source_id"]: row for row in manifest_rows}
     errors.extend(validate_manifest(manifest_rows, args.strict_files))
-    errors.extend(validate_claim_matrix(source_rows, manifest_sources))
+    errors.extend(validate_claim_matrix(claim_rows, manifest_sources))
     errors.extend(validate_official_trace(trace_rows, manifest_sources))
-    errors.extend(validate_source_binding(binding_rows, manifest_sources, source_rows))
-    errors.extend(ensure_full_source_coverage(manifest_rows, source_rows, trace_rows, binding_rows))
+    errors.extend(validate_source_binding(binding_rows, manifest_sources, claim_rows))
+    errors.extend(validate_locator_results(locator_rows, manifest_sources))
+    errors.extend(validate_page_binding_notes(page_binding_rows, manifest_sources, claim_rows, binding_rows))
+    errors.extend(ensure_full_source_coverage(manifest_rows, claim_rows, trace_rows, binding_rows))
 
     if errors:
         for error in errors:
@@ -345,9 +433,11 @@ def main() -> int:
 
     print("Assessment validation passed.")
     print(f"Sources checked: {len(manifest_rows)}")
-    print(f"Claims checked: {len(source_rows)}")
+    print(f"Claims checked: {len(claim_rows)}")
     print(f"Trace records checked: {len(trace_rows)}")
     print(f"Source binding records checked: {len(binding_rows)}")
+    print(f"Locator records checked: {len(locator_rows)}")
+    print(f"Page binding records checked: {len(page_binding_rows)}")
     return 0
 
 
