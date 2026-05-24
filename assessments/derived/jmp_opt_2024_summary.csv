@@ -1,0 +1,22 @@
+indicator_domain,indicator_code,indicator_label,value_percent,geography,year,source_sheet,source_column,scope_note
+Water,wat_basal_t,At least basic drinking water service,98.771707,occupied Palestinian territory,2024,wat,wat_basal_t,Country-level JMP estimate; not Gaza-specific crisis evidence.
+Water,wat_sm_t,Safely managed drinking water service,80.642017,occupied Palestinian territory,2024,wat,wat_sm_t,Country-level JMP estimate; not Gaza-specific crisis evidence.
+Water,wat_pip_t,Piped drinking water,52.949195,occupied Palestinian territory,2024,wat,wat_pip_t,Country-level JMP estimate; not Gaza-specific crisis evidence.
+Water,wat_imp_npip_t,Improved non-piped drinking water,47.05081,occupied Palestinian territory,2024,wat,wat_imp_npip_t,Country-level JMP estimate; not Gaza-specific crisis evidence.
+Water,wat_imp_av_t,Improved water source available when needed,89.034541,occupied Palestinian territory,2024,wat,wat_imp_av_t,Country-level JMP estimate; not Gaza-specific crisis evidence.
+Water,wat_imp_qual_t,Improved water source free of contamination,80.642017,occupied Palestinian territory,2024,wat,wat_imp_qual_t,Country-level JMP estimate; not Gaza-specific crisis evidence.
+Water,wat_imp_prem_t,Improved water source accessible on premises,93.77704,occupied Palestinian territory,2024,wat,wat_imp_prem_t,Country-level JMP estimate; not Gaza-specific crisis evidence.
+Sanitation,san_basal_t,At least basic sanitation service,99.395017,occupied Palestinian territory,2024,san,san_basal_t,Country-level JMP estimate; not Gaza-specific crisis evidence.
+Sanitation,san_sm_t,Safely managed sanitation service,73.511985,occupied Palestinian territory,2024,san,san_sm_t,Country-level JMP estimate; not Gaza-specific crisis evidence.
+Sanitation,san_sew_t,Sewer-connected sanitation,54.643342,occupied Palestinian territory,2024,san,san_sew_t,Country-level JMP estimate; not Gaza-specific crisis evidence.
+Sanitation,san_lim_t,Limited sanitation service,0.326734,occupied Palestinian territory,2024,san,san_lim_t,Country-level JMP estimate; not Gaza-specific crisis evidence.
+Sanitation,san_unimp_t,Unimproved sanitation service,0.150739,occupied Palestinian territory,2024,san,san_unimp_t,Country-level JMP estimate; not Gaza-specific crisis evidence.
+Sanitation,san_ns_t,Open defecation / no sanitation service,0.12751,occupied Palestinian territory,2024,san,san_ns_t,Country-level JMP estimate; not Gaza-specific crisis evidence.
+Hygiene,hyg_bas_t,Basic hygiene service,94.913292,occupied Palestinian territory,2024,hyg,hyg_bas_t,Country-level JMP estimate; not Gaza-specific crisis evidence.
+Hygiene,hyg_lim_t,Limited hygiene service,4.512928,occupied Palestinian territory,2024,hyg,hyg_lim_t,Country-level JMP estimate; not Gaza-specific crisis evidence.
+Hygiene,hyg_ns_t,No hygiene facility,0.57378,occupied Palestinian territory,2024,hyg,hyg_ns_t,Country-level JMP estimate; not Gaza-specific crisis evidence.
+Menstrual health,mh_priv_t,Private place to wash and change,80.832915,occupied Palestinian territory,2024,mh,mh_priv_t,Country-level JMP estimate; not Gaza-specific crisis evidence.
+Menstrual health,mh_part_t,Participation in school/work/social activities during menstruation,85.98079,occupied Palestinian territory,2024,mh,mh_part_t,Country-level JMP estimate; not Gaza-specific crisis evidence.
+Menstrual health,mh_mat_t,Use of menstrual materials,96.685981,occupied Palestinian territory,2024,mh,mh_mat_t,Country-level JMP estimate; not Gaza-specific crisis evidence.
+Menstrual health,mh_reuse_t,Reusable menstrual materials,2.130499,occupied Palestinian territory,2024,mh,mh_reuse_t,Country-level JMP estimate; not Gaza-specific crisis evidence.
+Menstrual health,mh_nreuse_t,Single-use or non-reusable menstrual materials,94.014236,occupied Palestinian territory,2024,mh,mh_nreuse_t,Country-level JMP estimate; not Gaza-specific crisis evidence.
