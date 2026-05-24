@@ -1,0 +1,5 @@
+upload_id,local_filename,size_bytes,sha256,source_id,citation_role,status,notes
+UP001,Nour-Turkman-JGPOH-2025.pdf,540117,374ddfd0514bee66bd7a010ea618ecb09bfc7ccc898b0aba97d3d42e3b8d40e4,HEALTH_WATER_GAZA,localized water-quality mechanism source,bound_uploaded,DOI 10.61034/JGPOH-2025-13; pages 1-13 contain metadata methods results discussion and limitations.
+UP002,Gazawater-1.pdf,501621,97189efe9142a33479092e3509c3445d396d12729f1ed35577ba91224d140491,SUPP_WATER_CONFLICT_OFORI_2025,supplemental political/legal commentary,duplicate_uploaded,Gazawater-1.pdf duplicates Gazawater.pdf by SHA-256.
+UP003,Gazawater.pdf,501621,97189efe9142a33479092e3509c3445d396d12729f1ed35577ba91224d140491,SUPP_WATER_CONFLICT_OFORI_2025,supplemental political/legal commentary,duplicate_uploaded,Gazawater.pdf duplicates Gazawater-1.pdf by SHA-256.
+UP004,The_political_economy_of_water_and_sanitation_in_P.pdf,1247215,05e1183ecf33df05fe26226be1ff309e8baa3a217f0a88a45ac2920d7d5c0b6c,FAYAD_PLOS_WATER_2025,political-economy context source,bound_uploaded,DOI 10.1371/journal.pwat.0000418; scoping review with 17 peer-reviewed and 37 grey-literature sources.
