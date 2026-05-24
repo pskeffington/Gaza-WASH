@@ -91,8 +91,10 @@ VALIDATION_STATUS = {
 VALIDATOR_ROLES = {
     "core_household_validator",
     "local_hotspot_validator",
+    "local_water_quality_validator",
     "indicative_trend_validator",
     "infrastructure_recovery_validator",
+    "political_economy_context_validator",
     "background_mechanism_validator",
     "excluded_or_restricted",
 }
@@ -100,14 +102,16 @@ CLAIM_WEIGHTS = {"high", "medium", "low", "none"}
 ALLOWED_STATUSES = {
     "allowed",
     "allowed_local_only",
+    "allowed_local_water_quality_only",
     "allowed_indicative_only",
     "allowed_context",
+    "allowed_political_economy_context",
     "allowed_background_only",
     "blocked_pending_scope",
 }
 TRACE_STATUSES = {"pending", "pending_blocked", "verified", "blocked", "needs_revision"}
-LOCAL_FILE_STATUSES = {"present", "missing", "unknown_not_checked"}
-PUBLIC_RECORD_STATUSES = {"verified", "secondary_record_found", "not_located", "scope_unresolved"}
+LOCAL_FILE_STATUSES = {"present", "missing", "unknown_not_checked", "uploaded_not_committed"}
+PUBLIC_RECORD_STATUSES = {"verified", "uploaded_file_verified", "secondary_record_found", "not_located", "scope_unresolved"}
 PAGE_BINDING_STATUSES = {"bound", "blocked", "not_required"}
 MANUSCRIPT_GATES = {
     "allowed",
@@ -222,8 +226,12 @@ def validate_claim_matrix(rows: list[dict[str, str]], manifest_sources: dict[str
             errors.append(f"claim matrix row {i}: background mechanism source cannot carry high-weight claim")
         if role == "local_hotspot_validator" and allowed != "allowed_local_only":
             errors.append(f"claim matrix row {i}: local hotspot source must be marked allowed_local_only")
+        if role == "local_water_quality_validator" and allowed != "allowed_local_water_quality_only":
+            errors.append(f"claim matrix row {i}: local water-quality source must be marked allowed_local_water_quality_only")
         if role == "indicative_trend_validator" and allowed != "allowed_indicative_only":
             errors.append(f"claim matrix row {i}: trend source must be marked allowed_indicative_only")
+        if role == "political_economy_context_validator" and allowed != "allowed_political_economy_context":
+            errors.append(f"claim matrix row {i}: political-economy source must be marked allowed_political_economy_context")
 
     return errors
 
