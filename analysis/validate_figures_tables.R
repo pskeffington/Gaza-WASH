@@ -118,8 +118,8 @@ assert_allowed(
   manifest,
   "validator_role",
   c(
-    "core_household_validator", "local_hotspot_validator", "indicative_trend_validator",
-    "infrastructure_recovery_validator", "background_mechanism_validator", "excluded_or_restricted"
+    "core_household_validator", "local_hotspot_validator", "local_water_quality_validator", "indicative_trend_validator",
+    "infrastructure_recovery_validator", "political_economy_context_validator", "background_mechanism_validator", "excluded_or_restricted"
   ),
   "manifest"
 )
@@ -127,12 +127,12 @@ assert_allowed(claims, "claim_weight", c("high", "medium", "low", "none"), "sour
 assert_allowed(
   claims,
   "allowed_status",
-  c("allowed", "allowed_local_only", "allowed_indicative_only", "allowed_context", "allowed_background_only", "blocked_pending_scope"),
+  c("allowed", "allowed_local_only", "allowed_local_water_quality_only", "allowed_indicative_only", "allowed_context", "allowed_political_economy_context", "allowed_background_only", "blocked_pending_scope"),
   "source_claim_matrix"
 )
 assert_allowed(trace, "status", c("pending", "pending_blocked", "verified", "blocked", "needs_revision"), "official_source_trace")
-assert_allowed(binding, "local_file_status", c("present", "missing", "unknown_not_checked"), "source_binding_status")
-assert_allowed(binding, "public_record_status", c("verified", "secondary_record_found", "not_located", "scope_unresolved"), "source_binding_status")
+assert_allowed(binding, "local_file_status", c("present", "missing", "unknown_not_checked", "uploaded_not_committed"), "source_binding_status")
+assert_allowed(binding, "public_record_status", c("verified", "uploaded_file_verified", "secondary_record_found", "not_located", "scope_unresolved"), "source_binding_status")
 assert_allowed(binding, "page_binding_status", c("bound", "blocked", "not_required"), "source_binding_status")
 assert_allowed(
   binding,
@@ -163,8 +163,14 @@ joined <- merge(joined, binding[, c("source_id", "page_binding_status", "manuscr
 bad_local <- joined$validator_role == "local_hotspot_validator" & joined$allowed_status != "allowed_local_only"
 if (any(bad_local)) fail("Local hotspot claim(s) must be allowed_local_only:", paste(joined$claim_id[bad_local], collapse = ", "))
 
+bad_water_quality <- joined$validator_role == "local_water_quality_validator" & joined$allowed_status != "allowed_local_water_quality_only"
+if (any(bad_water_quality)) fail("Local water-quality claim(s) must be allowed_local_water_quality_only:", paste(joined$claim_id[bad_water_quality], collapse = ", "))
+
 bad_trend <- joined$validator_role == "indicative_trend_validator" & joined$allowed_status != "allowed_indicative_only"
 if (any(bad_trend)) fail("Trend claim(s) must be allowed_indicative_only:", paste(joined$claim_id[bad_trend], collapse = ", "))
+
+bad_pe <- joined$validator_role == "political_economy_context_validator" & joined$allowed_status != "allowed_political_economy_context"
+if (any(bad_pe)) fail("Political-economy claim(s) must be allowed_political_economy_context:", paste(joined$claim_id[bad_pe], collapse = ", "))
 
 bad_background <- joined$validator_role == "background_mechanism_validator" & joined$claim_weight == "high"
 if (any(bad_background)) fail("Background claim(s) cannot carry high weight:", paste(joined$claim_id[bad_background], collapse = ", "))
