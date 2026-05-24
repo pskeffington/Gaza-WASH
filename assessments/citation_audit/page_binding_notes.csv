@@ -1,0 +1,11 @@
+source_id,claim_id,page_range,binding_note,allowed_use
+HEALTH_WATER_GAZA,C007,1,Metadata page gives title authors posted date and DOI 10.61034/JGPOH-2025-13,Citation metadata and source identity.
+HEALTH_WATER_GAZA,C007,2,Abstract reports study aim methods core results and conclusion including contamination percentages,Localized water-quality summary only.
+HEALTH_WATER_GAZA,C007,4-5,Methods describe Khan Younis and Middle Area setting sample sources laboratory testing and secondary MoH data,Methods and scope language.
+HEALTH_WATER_GAZA,C007,6-8,Results report microbial contamination in public supplies shelters healthcare facilities plus TDS and chlorine findings,Localized results language with sampling limits.
+HEALTH_WATER_GAZA,C007,10-13,Discussion limitations and recommendations frame microbial contamination chlorination TDS and public-health implications,Mechanism and limitation language.
+FAYAD_PLOS_WATER_2025,C009,1-2,Abstract and introduction identify political-economy challenges and review purpose,Political-economy context framing.
+FAYAD_PLOS_WATER_2025,C009,4-5,Methods describe scoping review search strategy inclusion criteria PRISMA-ScR and selection process,Methods description for contextual source.
+FAYAD_PLOS_WATER_2025,C009,6-9,Table 1 and results summarize included literature and political-economy issue frequency,Political-economy evidence map.
+FAYAD_PLOS_WATER_2025,C009,10-16,Results and conclusion discuss blockade restrictions institutional fragmentation funding sustainability and reconstruction implications,Sector-level context only.
+SUPP_WATER_CONFLICT_OFORI_2025,none,1-9,Duplicate uploaded PDFs contain commentary on water-conflict-humanity framing,Supplemental commentary only; do not use as primary evidence validator.
