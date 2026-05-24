@@ -2,7 +2,7 @@
 
 ## Repository purpose
 
-This repository supports a manuscript-grade Gaza WASH research project focused on conflict-affected water, sanitation, hygiene, infrastructure disruption, and operational public-health assessment.
+This repository supports a manuscript-grade Gaza WASH public-health research project focused on water, sanitation, hygiene, infrastructure disruption, and assessment evidence controls.
 
 ## Working target
 
@@ -18,32 +18,49 @@ Secondary targets:
 
 | Object | Path | Purpose | Status |
 |---|---|---|---|
-| Main manuscript | `manuscript/main.tex` | Compiled article shell | Pending |
-| Introduction | `manuscript/sections/01_introduction.tex` | Problem framing, WASH burden, conflict setting | Pending |
-| Methods | `manuscript/sections/02_methods.tex` | Remote-sensing, source audit, infrastructure assessment methods | Pending |
-| Results | `manuscript/sections/03_results.tex` | Mapped WASH findings and infrastructure-risk synthesis | Pending |
-| Discussion | `manuscript/sections/04_discussion.tex` | Public-health interpretation, limitations, operational implications | Pending |
-| References | `manuscript/references.bib` | Verified citation database | Pending |
-| Source audit | `docs/source_audit.md` | Claim-by-claim source verification tracker | Pending |
-| Figure/table validator | `analysis/validate_figures_tables.R` | Reproducibility and artifact check script | Pending |
+| Main manuscript | `manuscript/main.tex` | Compiled article shell | Created |
+| Introduction | `manuscript/sections/01_introduction.tex` | Problem framing and source-gated assessment rationale | Created |
+| Methods | `manuscript/sections/02_methods.tex` | Source-gated design, validator roles, claim controls, validation script | Created |
+| Results | `manuscript/sections/03_results.tex` | Evidence-control posture and allowed claim families | Created |
+| Discussion | `manuscript/sections/04_discussion.tex` | Minimal placeholder pending page-level source binding | Created placeholder |
+| References | `manuscript/references.bib` | Citation database | Existing |
+| Source audit | `docs/source_audit.md` | Claim-by-claim source verification tracker | Created |
+| Figure/table validator | `analysis/validate_figures_tables.R` | Reproducibility and artifact check script | Created |
+| Assessment validator | `scripts/validate_assessments.py` | Evidence-control validation script | Created |
+| Assessment manifest | `assessments/manifest.csv` | Source registry and validator-role map | Created |
+| Claim matrix | `assessments/citation_audit/source_claim_matrix.csv` | Claim-source gatekeeping table | Created |
+| Official trace | `assessments/citation_audit/official_source_trace.csv` | Official-source verification queue | Created |
 
 ## Current priority
 
-Build the source-audit and manuscript skeleton before expanding claims. All manuscript claims must be tied to dated sources, dated imagery, official datasets, peer-reviewed literature, or clearly labeled analytic outputs.
+Stage 3 is active: validator testing and source-document binding. The repository now contains the manuscript shell, source-audit tracker, assessment validator, and figure/table artifact validator. No page-specific quantitative manuscript claims should be promoted until source files or official public URLs are bound to exact pages, tables, or figures.
 
 ## Claim handling rules
 
 - Verified claims may enter the manuscript body.
 - Partially verified claims remain in notes or background only.
-- Unverified operational claims must be labeled `UNVERIFIED -- POSSIBLE SIMULATION` until evidence is attached.
+- Unverified claims must be labeled `UNVERIFIED -- POSSIBLE SIMULATION` until evidence is attached.
 - Imagery-derived observations must include image date, platform or source, band/composite if relevant, and analytic interpretation boundary.
 - No unsupported causal claims.
+- Local factsheets remain local-only.
+- Trend reports remain indicative-only.
+- Infrastructure recovery reports remain context-only unless they directly report household outcomes.
+- Background mechanism literature may not be used as current field validation.
 
 ## Immediate execution sequence
 
-1. Create manuscript scaffold.
-2. Create source-audit tracker.
-3. Convert existing presentation logic into section-level manuscript claims.
+1. ~~Create manuscript scaffold.~~
+2. ~~Create source-audit tracker.~~
+3. ~~Convert existing presentation logic into section-level manuscript claims.~~
 4. Verify core citations and official source metadata.
-5. Add figure/table validation script.
+5. ~~Add figure/table validation script.~~
 6. Prepare pre-release for contributor review.
+
+## Next executable units
+
+1. Bind `GJWASH_2025_08` to an official public URL or committed source file and record page locations for C001.
+2. Resolve enumeration-area metadata for `ALMAWASI7_EA32` and `ASSAWARAH_EA8`.
+3. Verify `LTM_2025_04_R3` and `LTM_2025_06_R4` source dates, assessed frames, and page locations.
+4. Verify `RDNA_2025_02` official report metadata and infrastructure table locations.
+5. Resolve or keep blocked `SHELTER_WASH_FSS_IDP_2025_07` depending on Gaza-specific geography.
+6. Replace the Discussion placeholder after source binding is complete.
