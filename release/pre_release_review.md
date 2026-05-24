@@ -1,6 +1,6 @@
 # Pre-Release Review Checklist
 
-Status: partially unblocked. Uploaded/DOI-backed context sources and URL-bound official context sources are available; household assessment, local factsheet, original LTM reports, RDNA table source, and restricted IDP source remain blocked.
+Status: partially unblocked. Uploaded/DOI-backed context sources, URL-bound official context sources, and JMP baseline workbooks are available. Household assessment, local factsheet, original LTM reports, RDNA table source, and restricted IDP source remain blocked.
 
 Tracking issue: `#1 Acquire and bind Gaza WASH source documents`.
 
@@ -20,6 +20,10 @@ Tracking issue: `#1 Acquire and bind Gaza WASH source documents`.
 | B010 | `OCHA_SITREP_2026_04_17` | Use only for official time-stamped context. | Bound |
 | B011 | `OCHA_SITREP_2026_05_15` | Use only for official time-stamped WASH and infrastructure context. | Bound |
 | B012 | `WASH_CLUSTER_PALESTINE_2026` | Use only as coordination hub and source-discovery context. | Bound |
+| B013 | `JMP_WASH_HH_2025_COUNTRY` | Use only for country-level occupied Palestinian territory WASH baseline context. | Bound |
+| B014 | `JMP_PSE_PROFILE_2025` | Use only for State of Palestine 2024 household WASH profile context. | Bound |
+| B015 | `JMP_PSE_INEQUALITIES_2021` | Use only for pre-crisis inequality context. | Bound |
+| B016 | `JMP_WINHCF_PSE_2024` | Use only for country-level WASH in health care facilities baseline context. | Bound |
 
 ## Release checks
 
