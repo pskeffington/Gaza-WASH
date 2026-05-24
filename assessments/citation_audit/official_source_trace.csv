@@ -1,9 +1,9 @@
 trace_id,source_id,official_or_primary_location,organization_to_verify,verification_task,status,notes
-T001,GJWASH_2025_08,ReliefWeb WASH Cluster or assessment publisher,WASH Cluster,Verify title date publisher PDF and sampling frame,pending,Record public URL and page-specific claims.
-T002,ALMAWASI7_EA32,Assessment publisher or factsheet host,Humanitarian assessment publisher,Verify enumeration area title geography and date,pending,Record exact area definition.
-T003,ASSAWARAH_EA8,Assessment publisher or factsheet host,Humanitarian assessment publisher,Verify enumeration area title geography and date,pending,Record exact area definition.
-T004,LTM_2025_04_R3,WASH Cluster or report host,WASH Cluster,Verify round date geography and assessed frame,pending,Use only for trend language.
-T005,LTM_2025_06_R4,WASH Cluster or report host,WASH Cluster,Verify round date geography and assessed frame,pending,Use only for trend language.
-T006,RDNA_2025_02,World Bank United Nations European Union or official RDNA host,RDNA partners,Verify final report date authors and infrastructure tables,pending,Use for infrastructure and recovery context.
-T007,HEALTH_WATER_GAZA,Publisher or repository record,Named publisher,Verify bibliographic metadata and mechanism relevance,pending,Use for background only.
+T001,GJWASH_2025_08,ReliefWeb WASH Cluster or assessment publisher,WASH Cluster,Verify title date publisher PDF and sampling frame,needs_revision,Exact public report record not located in current web search; expected local file is absent; keep C001 page binding blocked.
+T002,ALMAWASI7_EA32,Assessment publisher or factsheet host,Humanitarian assessment publisher,Verify enumeration area title geography and date,needs_revision,Exact public factsheet record not located in current web search; keep local-only claim blocked pending file or URL.
+T003,ASSAWARAH_EA8,Assessment publisher or factsheet host,Humanitarian assessment publisher,Verify enumeration area title geography and date,needs_revision,Exact public factsheet record not located in current web search; keep local-only claim blocked pending file or URL.
+T004,LTM_2025_04_R3,WASH Cluster or report host,WASH Cluster,Verify round date geography and assessed frame,needs_revision,Exact public Round 3 record not located in current web search; use no trend claim until source is bound.
+T005,LTM_2025_06_R4,WASH Cluster or report host,WASH Cluster,Verify round date geography and assessed frame,needs_revision,Exact public Round 4 record not located in current web search; use no trend claim until source is bound.
+T006,RDNA_2025_02,World Bank United Nations European Union or official RDNA host,RDNA partners,Verify final report date authors and infrastructure tables,pending,Secondary news confirms a joint UN EU World Bank Interim Rapid Damage and Needs Assessment released Feb 18 2025; official report URL and tables still need binding.
+T007,HEALTH_WATER_GAZA,Publisher or repository record,Named publisher,Verify bibliographic metadata and mechanism relevance,needs_revision,Exact title not located in current web search; do not cite until bibliographic record is identified.
 T008,SHELTER_WASH_FSS_IDP_2025_07,Assessment publisher or report host,Humanitarian assessment publisher,Resolve project-scope geography before any use,pending_blocked,Do not use for findings until resolved.
