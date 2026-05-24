@@ -1,6 +1,6 @@
 # Pre-Release Review Checklist
 
-Status: partially unblocked. Two uploaded/DOI-backed context sources are bound; household assessment, local factsheet, trend-monitoring, RDNA, and restricted IDP sources remain blocked.
+Status: partially unblocked. Uploaded/DOI-backed context sources and URL-bound official context sources are available; household assessment, local factsheet, original LTM reports, RDNA table source, and restricted IDP source remain blocked.
 
 Tracking issue: `#1 Acquire and bind Gaza WASH source documents`.
 
@@ -17,6 +17,9 @@ Tracking issue: `#1 Acquire and bind Gaza WASH source documents`.
 | B007 | `HEALTH_WATER_GAZA` | Use Turkman et al. 2025 only for localized water-quality and mechanism language. | Bound |
 | B008 | `SHELTER_WASH_FSS_IDP_2025_07` | Confirm Gaza-specific geography or keep excluded. | Blocked |
 | B009 | `FAYAD_PLOS_WATER_2025` | Use Fayad et al. 2025 only for political-economy context. | Bound |
+| B010 | `OCHA_SITREP_2026_04_17` | Use only for official time-stamped context. | Bound |
+| B011 | `OCHA_SITREP_2026_05_15` | Use only for official time-stamped WASH and infrastructure context. | Bound |
+| B012 | `WASH_CLUSTER_PALESTINE_2026` | Use only as coordination hub and source-discovery context. | Bound |
 
 ## Release checks
 
