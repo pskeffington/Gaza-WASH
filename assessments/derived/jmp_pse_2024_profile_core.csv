@@ -1,0 +1,34 @@
+indicator_domain,indicator_code,indicator_label,value_percent,setting,geography,year,source_sheet,scope_note
+Water,water_at_least_basic,At least basic drinking water,98.8,total,State of Palestine,2024,Estimates,JMP State of Palestine profile estimate; not Gaza-specific crisis evidence.
+Water,piped_water,Piped drinking water,52.9,total,State of Palestine,2024,Estimates,JMP State of Palestine profile estimate; not Gaza-specific crisis evidence.
+Water,water_on_premises,Drinking water on premises,93.8,total,State of Palestine,2024,Estimates,JMP State of Palestine profile estimate; not Gaza-specific crisis evidence.
+Water,water_available,Water available when needed,89,total,State of Palestine,2024,Estimates,JMP State of Palestine profile estimate; not Gaza-specific crisis evidence.
+Water,water_free_contamination,Water free of contamination,80.6,total,State of Palestine,2024,Estimates,JMP State of Palestine profile estimate; not Gaza-specific crisis evidence.
+Water,water_safely_managed,Safely managed drinking water,80.6,total,State of Palestine,2024,Estimates,JMP State of Palestine profile estimate; not Gaza-specific crisis evidence.
+Sanitation,sanitation_at_least_basic,At least basic sanitation,99.4,total,State of Palestine,2024,Estimates,JMP State of Palestine profile estimate; not Gaza-specific crisis evidence.
+Sanitation,sanitation_safely_managed,Safely managed sanitation,73.5,total,State of Palestine,2024,Estimates,JMP State of Palestine profile estimate; not Gaza-specific crisis evidence.
+Hygiene,hygiene_basic,Basic hygiene,94.9,total,State of Palestine,2024,Estimates,JMP State of Palestine profile estimate; not Gaza-specific crisis evidence.
+Menstrual health,private_place,Private place to wash and change,80.832915,total,State of Palestine,2024,Estimates,JMP State of Palestine profile estimate; not Gaza-specific crisis evidence.
+Menstrual health,participation,Participation in school/work/social activities during menstruation,85.98079,total,State of Palestine,2024,Estimates,JMP State of Palestine profile estimate; not Gaza-specific crisis evidence.
+Water,water_at_least_basic,At least basic drinking water,100,rural,State of Palestine,2024,Estimates,JMP State of Palestine profile estimate; not Gaza-specific crisis evidence.
+Water,piped_water,Piped drinking water,89.4,rural,State of Palestine,2024,Estimates,JMP State of Palestine profile estimate; not Gaza-specific crisis evidence.
+Water,water_on_premises,Drinking water on premises,100,rural,State of Palestine,2024,Estimates,JMP State of Palestine profile estimate; not Gaza-specific crisis evidence.
+Water,water_available,Water available when needed,87.4,rural,State of Palestine,2024,Estimates,JMP State of Palestine profile estimate; not Gaza-specific crisis evidence.
+Water,water_free_contamination,Water free of contamination,76.4,rural,State of Palestine,2024,Estimates,JMP State of Palestine profile estimate; not Gaza-specific crisis evidence.
+Water,water_safely_managed,Safely managed drinking water,76.4,rural,State of Palestine,2024,Estimates,JMP State of Palestine profile estimate; not Gaza-specific crisis evidence.
+Sanitation,sanitation_at_least_basic,At least basic sanitation,98.7,rural,State of Palestine,2024,Estimates,JMP State of Palestine profile estimate; not Gaza-specific crisis evidence.
+Sanitation,sanitation_safely_managed,Safely managed sanitation,32.6,rural,State of Palestine,2024,Estimates,JMP State of Palestine profile estimate; not Gaza-specific crisis evidence.
+Hygiene,hygiene_basic,Basic hygiene,95.5,rural,State of Palestine,2024,Estimates,JMP State of Palestine profile estimate; not Gaza-specific crisis evidence.
+Menstrual health,private_place,Private place to wash and change,82.85808,rural,State of Palestine,2024,Estimates,JMP State of Palestine profile estimate; not Gaza-specific crisis evidence.
+Menstrual health,participation,Participation in school/work/social activities during menstruation,88.36788,rural,State of Palestine,2024,Estimates,JMP State of Palestine profile estimate; not Gaza-specific crisis evidence.
+Water,water_at_least_basic,At least basic drinking water,98.4,urban,State of Palestine,2024,Estimates,JMP State of Palestine profile estimate; not Gaza-specific crisis evidence.
+Water,piped_water,Piped drinking water,42.6,urban,State of Palestine,2024,Estimates,JMP State of Palestine profile estimate; not Gaza-specific crisis evidence.
+Water,water_on_premises,Drinking water on premises,92,urban,State of Palestine,2024,Estimates,JMP State of Palestine profile estimate; not Gaza-specific crisis evidence.
+Water,water_available,Water available when needed,89.5,urban,State of Palestine,2024,Estimates,JMP State of Palestine profile estimate; not Gaza-specific crisis evidence.
+Water,water_free_contamination,Water free of contamination,81.9,urban,State of Palestine,2024,Estimates,JMP State of Palestine profile estimate; not Gaza-specific crisis evidence.
+Water,water_safely_managed,Safely managed drinking water,81.9,urban,State of Palestine,2024,Estimates,JMP State of Palestine profile estimate; not Gaza-specific crisis evidence.
+Sanitation,sanitation_at_least_basic,At least basic sanitation,99.6,urban,State of Palestine,2024,Estimates,JMP State of Palestine profile estimate; not Gaza-specific crisis evidence.
+Sanitation,sanitation_safely_managed,Safely managed sanitation,85.1,urban,State of Palestine,2024,Estimates,JMP State of Palestine profile estimate; not Gaza-specific crisis evidence.
+Hygiene,hygiene_basic,Basic hygiene,94.7,urban,State of Palestine,2024,Estimates,JMP State of Palestine profile estimate; not Gaza-specific crisis evidence.
+Menstrual health,private_place,Private place to wash and change,80.25761,urban,State of Palestine,2024,Estimates,JMP State of Palestine profile estimate; not Gaza-specific crisis evidence.
+Menstrual health,participation,Participation in school/work/social activities during menstruation,85.30267,urban,State of Palestine,2024,Estimates,JMP State of Palestine profile estimate; not Gaza-specific crisis evidence.
