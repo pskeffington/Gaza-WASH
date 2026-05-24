@@ -22,8 +22,10 @@ Secondary targets:
 | Introduction | `manuscript/sections/01_introduction.tex` | Problem framing and source-gated assessment rationale | Created |
 | Methods | `manuscript/sections/02_methods.tex` | Source-gated design, validator roles, claim controls, validation script | Created |
 | Results | `manuscript/sections/03_results.tex` | Evidence-control posture and allowed claim families | Created |
-| Discussion | `manuscript/sections/04_discussion.tex` | Minimal placeholder pending claim-promotion decision | Created placeholder |
+| Discussion | `manuscript/sections/04_discussion.tex` | Diagnostic interpretation using bound claims only | Advanced |
 | Diagnostic report | `reports/gaza_wash_diagnostic_report.md` | Baseline-to-crisis diagnostic with evidence gaps | Created |
+| Diagnostic exhibits | `reports/diagnostic_exhibits.md` | Bound-source exhibits and evidence-gap tables | Created |
+| Diagnostic refinement note | `reports/diagnostic_refinement_note.md` | Stage 4 refinement notes | Created |
 | References | `manuscript/references.bib` | Citation database | Existing |
 | Source audit | `docs/source_audit.md` | Claim-by-claim source verification tracker | Created |
 | Source binding status | `assessments/citation_audit/source_binding_status.csv` | Source file and public-record binding status | Created |
@@ -37,7 +39,7 @@ Secondary targets:
 
 ## Current priority
 
-Stage 4 is active: diagnostic report development. Stage 3 source acquisition remains open for blocked household assessment, local factsheet, original LTM, RDNA table, and restricted IDP sources. The diagnostic pathway is partially unblocked because bound sources now support baseline context, localized water-quality mechanism discussion, political-economy interpretation, official time-stamped context, coordination context, and explicit evidence-gap documentation.
+Stage 4 is active: diagnostic report and manuscript discussion development. Stage 3 source acquisition remains open for blocked household assessment, local factsheet, original LTM, RDNA table, and restricted IDP sources. The diagnostic pathway is partially unblocked because bound sources now support baseline context, localized water-quality mechanism discussion, political-economy interpretation, official time-stamped context, coordination context, health-care-facility baseline context, and explicit evidence-gap documentation.
 
 ## Bound diagnostic source families
 
@@ -51,7 +53,7 @@ Stage 4 is active: diagnostic report development. Stage 3 source acquisition rem
 
 ## Claim handling rules
 
-- Verified and page-bound claims may enter the diagnostic report.
+- Verified and page-bound claims may enter the diagnostic report or manuscript discussion.
 - Context sources remain context sources; do not promote them into household prevalence findings.
 - Unverified claims must be labeled `UNVERIFIED -- POSSIBLE SIMULATION` until evidence is attached.
 - Imagery-derived observations must include image date, platform or source, band/composite if relevant, and analytic interpretation boundary.
@@ -70,12 +72,13 @@ Stage 4 is active: diagnostic report development. Stage 3 source acquisition rem
 5. ~~Add figure/table validation script.~~
 6. Partially complete: prepare pre-release for contributor review. Current result: blocker checklist created.
 7. ~~Create diagnostic report draft from bound context and baseline sources.~~
+8. ~~Add diagnostic exhibit tables and evidence-gap exhibit.~~
+9. ~~Promote bound diagnostic claims C007 and C009-C016 into manuscript discussion.~~
 
 ## Next executable units
 
-1. Promote bound diagnostic claims C007 and C009-C016 into refined report prose with citation-ready wording.
-2. Add diagnostic exhibit tables from the derived JMP CSV files.
-3. Add a diagnostic evidence-gap table for C001-C006 and C008.
-4. Run local validation and record result.
-5. Replace or expand `manuscript/sections/04_discussion.tex` only after selecting which diagnostic claims move into the manuscript.
-6. Continue acquisition for `GJWASH_2025_08`, `ALMAWASI7_EA32`, `ASSAWARAH_EA8`, `LTM_2025_04_R3`, `LTM_2025_06_R4`, `RDNA_2025_02`, and `SHELTER_WASH_FSS_IDP_2025_07`.
+1. Run local validation and record result.
+2. Create manuscript-ready table stubs from `reports/diagnostic_exhibits.md`.
+3. Add citation placeholders or BibTeX keys for all bound diagnostic claims used in the discussion.
+4. Review `manuscript/sections/03_results.tex` for alignment with the diagnostic framing.
+5. Continue acquisition for `GJWASH_2025_08`, `ALMAWASI7_EA32`, `ASSAWARAH_EA8`, `LTM_2025_04_R3`, `LTM_2025_06_R4`, `RDNA_2025_02`, and `SHELTER_WASH_FSS_IDP_2025_07`.
