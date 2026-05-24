@@ -1,0 +1,9 @@
+discussion_claim,claim_ids,citation_keys,verification_status,scope_guard
+Diagnostic interpretation not prevalence assessment,C007 C009 C010 C011 C013 C015 C016,turkman_2025;fayad_2025;ocha_2026_apr17;ocha_2026_may15;jmp_wash_hh_2025_country;jmp_pse_inequalities_2021;jmp_winhcf_pse_2024,mixed_external_and_repo_verified,Do not convert diagnostic interpretation into household prevalence estimate.
+Country-level baseline WASH indicators,C013 C014,jmp_wash_hh_2025_country;jmp_pse_profile_2025,repo_verified_uploaded_workbook,Country-level baseline only; not Gaza-specific crisis evidence.
+Pre-crisis Gaza-region inequality context,C015,jmp_pse_inequalities_2021,repo_verified_uploaded_workbook,Use as 2020 vulnerability baseline only.
+Localized water-quality mechanism,C007,turkman_2025,repo_verified_public_lookup_unresolved,Use Khan Younis and Middle Area May-June 2024 scope only.
+Political-economy context,C009,fayad_2025,externally_verified,Use sector-level context only; not field measurement.
+Health-care-facility baseline context,C016,jmp_winhcf_pse_2024,repo_verified_uploaded_workbook,Country-level HCF baseline only; not crisis damage.
+Official time-stamped situation context,C010 C011 C012,ocha_2026_apr17;ocha_2026_may15;wash_cluster_palestine_2026,externally_verified,Use time-stamped context and coordination hub only; not LTM or RDNA replacement.
+Evidence incompleteness limitation,C001 C002 C003 C004 C005 C006 C008,none_not_cited,blocked_sources,Do not promote blocked claims until source rows are bound.
