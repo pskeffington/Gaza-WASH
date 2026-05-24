@@ -1,0 +1,15 @@
+citation_key,source_id,verification_status,verification_basis,repo_use,notes
+fayad_2025,FAYAD_PLOS_WATER_2025,externally_verified,DOI 10.1371/journal.pwat.0000418 resolves through publisher DOI path,political-economy context,Use for sector-level context only.
+turkman_2025,HEALTH_WATER_GAZA,repo_verified_public_lookup_unresolved,Uploaded PDF metadata and DOI text in repo audit,localized water-quality mechanism,DOI 10.61034/JGPOH-2025-13 did not resolve in public web search during this pass; keep citation with verification caveat.
+ocha_2026_apr17,OCHA_SITREP_2026_04_17,externally_verified,OCHA public report URL opens,time-stamped official context,Use as context only; not LTM replacement.
+ocha_2026_may15,OCHA_SITREP_2026_05_15,externally_verified,OCHA public report URL opens,time-stamped official context,Use as context only; not LTM or RDNA replacement.
+wash_cluster_palestine_2026,WASH_CLUSTER_PALESTINE_2026,externally_verified,ReliefWeb Response WASH Cluster page opens,coordination hub context,Use as hub/source discovery only.
+jmp_wash_hh_2025_country,JMP_WASH_HH_2025_COUNTRY,repo_verified_uploaded_workbook,Uploaded workbook SHA-256 recorded in official trace and upload inventory,country-level baseline context,Use derived CSV only; not Gaza-specific crisis evidence.
+jmp_pse_profile_2025,JMP_PSE_PROFILE_2025,repo_verified_uploaded_workbook,Uploaded workbook SHA-256 recorded in official trace and upload inventory,country-level profile context,Use derived CSV only; not Gaza-specific crisis evidence.
+jmp_pse_inequalities_2021,JMP_PSE_INEQUALITIES_2021,repo_verified_uploaded_workbook,Uploaded workbook SHA-256 recorded in official trace and upload inventory,pre-crisis inequality context,Use derived CSV only; not current field validation.
+jmp_winhcf_pse_2024,JMP_WINHCF_PSE_2024,repo_verified_uploaded_workbook,Uploaded workbook SHA-256 recorded in official trace and upload inventory,HCF baseline context,Use derived CSV only; not Gaza-specific crisis evidence.
+fewtrell_2005,BACKGROUND_WASH_MECHANISM,not_rechecked_this_pass,Existing DOI metadata in references.bib,general WASH mechanism background,Not currently central to promoted discussion claims.
+cairncross_2010,BACKGROUND_WASH_MECHANISM,not_rechecked_this_pass,Existing DOI metadata in references.bib,general WASH mechanism background,Not currently central to promoted discussion claims.
+taylor_2015,BACKGROUND_CHOLERA_WASH,not_rechecked_this_pass,Existing DOI metadata in references.bib,general WASH mechanism background,Not currently central to promoted discussion claims.
+connolly_2004,BACKGROUND_COMPLEX_EMERGENCIES,not_rechecked_this_pass,Existing DOI metadata in references.bib,complex emergency background,Not currently central to promoted discussion claims.
+sphere_2018,BACKGROUND_STANDARDS,not_rechecked_this_pass,Existing URL metadata in references.bib,humanitarian standards background,Not currently central to promoted discussion claims.
