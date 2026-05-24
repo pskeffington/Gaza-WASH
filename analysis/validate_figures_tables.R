@@ -1,7 +1,7 @@
 #!/usr/bin/env Rscript
 
 # Validate manuscript-facing tabular artifacts for the Gaza WASH project.
-# Scope: file presence, CSV readability, schema, primary keys, joins, controlled values, source-binding gates, and locator results.
+# Scope: file presence, CSV readability, schema, primary keys, joins, controlled values, source-binding gates, locator results, and page bindings.
 
 fail <- function(...) stop(paste(...), call. = FALSE)
 
@@ -13,6 +13,7 @@ required_paths <- c(
   "assessments/citation_audit/official_source_trace.csv",
   "assessments/citation_audit/source_binding_status.csv",
   "assessments/citation_audit/source_locator_results.csv",
+  "assessments/citation_audit/page_binding_notes.csv",
   "manuscript/main.tex",
   "manuscript/sections/01_introduction.tex",
   "manuscript/sections/02_methods.tex",
@@ -75,11 +76,16 @@ locator_names <- c(
   "candidate_url", "candidate_role", "verification_status", "notes"
 )
 
+page_binding_names <- c(
+  "source_id", "claim_id", "page_range", "binding_note", "allowed_use"
+)
+
 manifest <- read_checked_csv("assessments/manifest.csv", manifest_names)
 claims <- read_checked_csv("assessments/citation_audit/source_claim_matrix.csv", claim_names)
 trace <- read_checked_csv("assessments/citation_audit/official_source_trace.csv", trace_names)
 binding <- read_checked_csv("assessments/citation_audit/source_binding_status.csv", binding_names)
 locator <- read_checked_csv("assessments/citation_audit/source_locator_results.csv", locator_names)
+page_binding <- read_checked_csv("assessments/citation_audit/page_binding_notes.csv", page_binding_names)
 
 assert_unique <- function(x, column, frame_name) {
   dup <- x[[column]][duplicated(x[[column]])]
@@ -151,6 +157,14 @@ for (frame in list(claims = claims, trace = trace, binding = binding)) {
 unknown_locator <- setdiff(locator$target_source_id, manifest$source_id)
 if (length(unknown_locator) > 0) fail("Locator references unknown source_id(s):", paste(unknown_locator, collapse = ", "))
 
+page_known_sources <- c(manifest$source_id, "SUPP_WATER_CONFLICT_OFORI_2025")
+unknown_page_sources <- setdiff(page_binding$source_id, page_known_sources)
+if (length(unknown_page_sources) > 0) fail("Page binding references unknown source_id(s):", paste(unknown_page_sources, collapse = ", "))
+
+claim_known <- c(claims$claim_id, "none")
+unknown_page_claims <- setdiff(page_binding$claim_id, claim_known)
+if (length(unknown_page_claims) > 0) fail("Page binding references unknown claim_id(s):", paste(unknown_page_claims, collapse = ", "))
+
 for (frame_name in c("claims", "trace", "binding")) {
   frame <- get(frame_name)
   missing_source <- setdiff(manifest$source_id, frame$source_id)
@@ -181,6 +195,10 @@ if (any(bad_restricted)) fail("Restricted claim(s) must remain blocked_pending_s
 bad_promoted <- joined$page_binding_status != "bound" & joined$status == "ready_for_manuscript"
 if (any(bad_promoted)) fail("Unbound claim(s) marked ready_for_manuscript:", paste(joined$claim_id[bad_promoted], collapse = ", "))
 
+bound_claims <- joined$claim_id[joined$page_binding_status == "bound"]
+missing_bound_notes <- setdiff(bound_claims, page_binding$claim_id)
+if (length(missing_bound_notes) > 0) fail("Bound claim(s) missing page-binding notes:", paste(missing_bound_notes, collapse = ", "))
+
 located_locator <- locator$verification_status %in% c("located_official", "located_secondary", "located_secondary_only")
 missing_locator_url <- located_locator & !grepl("^https?://", locator$candidate_url)
 if (any(missing_locator_url)) fail("Located locator row(s) missing candidate URL:", paste(locator$locator_id[missing_locator_url], collapse = ", "))
@@ -197,3 +215,4 @@ message("Claim rows checked: ", nrow(claims))
 message("Official trace rows checked: ", nrow(trace))
 message("Source binding rows checked: ", nrow(binding))
 message("Locator rows checked: ", nrow(locator))
+message("Page binding rows checked: ", nrow(page_binding))
