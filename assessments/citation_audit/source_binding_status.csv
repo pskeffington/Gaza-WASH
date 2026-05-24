@@ -10,4 +10,8 @@ FAYAD_PLOS_WATER_2025,assessments/source_documents/fayad_plos_water_2025.pdf,upl
 OCHA_SITREP_2026_04_17,not_applicable,unknown_not_checked,verified,bound,allowed,Use URL-bound official context only; C010 page binding is URL-level.
 OCHA_SITREP_2026_05_15,not_applicable,unknown_not_checked,verified,bound,allowed,Use URL-bound official context only; C011 page binding is URL-level.
 WASH_CLUSTER_PALESTINE_2026,not_applicable,unknown_not_checked,verified,bound,allowed,Use URL-bound coordination hub context only; C012 page binding is URL-level.
+JMP_WASH_HH_2025_COUNTRY,assessments/source_documents/JMP_WASH_HH_2025_by_country.xlsx,uploaded_not_committed,verified,bound,allowed,Use derived CSV country-level baseline only; C013 page binding is derived-table level.
+JMP_PSE_PROFILE_2025,assessments/source_documents/JMP_2025_PSE_State_of_Palestine.xlsx,uploaded_not_committed,verified,bound,allowed,Use derived CSV State profile baseline only; C014 page binding is derived-table level.
+JMP_PSE_INEQUALITIES_2021,assessments/source_documents/JMP_2021_INEQUALITIES_PSE_State_of_Palestine.xlsm,uploaded_not_committed,verified,bound,allowed,Use derived CSV pre-crisis inequality context only; C015 page binding is derived-table level.
+JMP_WINHCF_PSE_2024,assessments/source_documents/JMP_2024_WinHCF_PSE_occupied_Palestinian_territory.xlsx,uploaded_not_committed,verified,bound,allowed,Use derived CSV health-care-facility baseline context only; C016 page binding is derived-table level.
 SHELTER_WASH_FSS_IDP_2025_07,assessments/source_documents/2025-07_shelter_wash_fss_idp_assessment_results.pdf,missing,scope_unresolved,blocked,excluded_pending_scope,Confirm Gaza-specific geography or keep excluded.
