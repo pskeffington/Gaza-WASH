@@ -1,6 +1,7 @@
 name: Validate Gaza WASH repo
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
