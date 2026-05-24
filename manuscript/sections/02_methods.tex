@@ -1,0 +1,25 @@
+% ************************************************************
+% METHODS
+% ************************************************************
+
+\section{Methods}
+
+\subsection{Design}
+
+This manuscript uses a source-gated assessment design. Each source is classified before manuscript use according to source type, geography, reporting period, organization, validation status, validator role, manuscript role, and use limitation. The source registry is maintained in \texttt{assessments/manifest.csv}. Claim-level use is controlled through \texttt{assessments/citation\_audit/source\_claim\_matrix.csv}. Official-source verification tasks are tracked in \texttt{assessments/citation\_audit/official\_source\_trace.csv}.
+
+\subsection{Validator roles}
+
+Sources are assigned to one of six validator roles: core household validator, local hotspot validator, indicative trend validator, infrastructure recovery validator, background mechanism validator, or excluded/restricted source. The role determines whether a source may support household WASH claims, localized case illustrations, time-stamped trend language, infrastructure and recovery context, background mechanism discussion, or no manuscript claim.
+
+\subsection{Claim controls}
+
+Claims are admitted only when the claim identifier, source identifier, claim weight, allowed status, scope note, manuscript section, and page-level status are recorded. Claims marked local-only, indicative-only, context-only, or background-only must retain that limitation in the manuscript language. Sources marked excluded or restricted cannot support findings unless the blocking condition is resolved in the audit layer.
+
+\subsection{Validation script}
+
+Repository validation is performed with \texttt{scripts/validate\_assessments.py}. The script checks required directories, manifest headers, controlled vocabularies, source-claim mappings, official-source trace fields, and restricted-source handling. The non-strict mode allows the audit layer to validate before local PDF files are committed. The strict-files mode additionally requires all local source-document paths to exist.
+
+% ************************************************************
+% END METHODS
+% ************************************************************
