@@ -1,7 +1,7 @@
 #!/usr/bin/env Rscript
 
 # Validate manuscript-facing tabular artifacts for the Gaza WASH project.
-# Scope: file presence, CSV readability, schema, primary keys, joins, controlled values, and source-binding gates.
+# Scope: file presence, CSV readability, schema, primary keys, joins, controlled values, source-binding gates, and locator results.
 
 fail <- function(...) stop(paste(...), call. = FALSE)
 
@@ -12,6 +12,7 @@ required_paths <- c(
   "assessments/citation_audit/source_claim_matrix.csv",
   "assessments/citation_audit/official_source_trace.csv",
   "assessments/citation_audit/source_binding_status.csv",
+  "assessments/citation_audit/source_locator_results.csv",
   "manuscript/main.tex",
   "manuscript/sections/01_introduction.tex",
   "manuscript/sections/02_methods.tex",
@@ -69,10 +70,16 @@ binding_names <- c(
   "page_binding_status", "manuscript_gate", "next_action"
 )
 
+locator_names <- c(
+  "locator_id", "target_source_id", "query_focus", "result_type", "candidate_title",
+  "candidate_url", "candidate_role", "verification_status", "notes"
+)
+
 manifest <- read_checked_csv("assessments/manifest.csv", manifest_names)
 claims <- read_checked_csv("assessments/citation_audit/source_claim_matrix.csv", claim_names)
 trace <- read_checked_csv("assessments/citation_audit/official_source_trace.csv", trace_names)
 binding <- read_checked_csv("assessments/citation_audit/source_binding_status.csv", binding_names)
+locator <- read_checked_csv("assessments/citation_audit/source_locator_results.csv", locator_names)
 
 assert_unique <- function(x, column, frame_name) {
   dup <- x[[column]][duplicated(x[[column]])]
@@ -92,6 +99,7 @@ assert_unique(manifest, "source_id", "manifest")
 assert_unique(claims, "claim_id", "source_claim_matrix")
 assert_unique(trace, "trace_id", "official_source_trace")
 assert_unique(binding, "source_id", "source_binding_status")
+assert_unique(locator, "locator_id", "source_locator_results")
 
 assert_allowed(manifest, "original_or_derived", c("original", "secondary", "derived", "unknown"), "manifest")
 assert_allowed(
@@ -132,11 +140,16 @@ assert_allowed(
   c("allowed", "do_not_promote_claims", "context_only_pending_official_url", "do_not_cite", "excluded_pending_scope"),
   "source_binding_status"
 )
+assert_allowed(locator, "result_type", c("official_match", "secondary_match", "official_context", "secondary_context", "no_exact_match"), "source_locator_results")
+assert_allowed(locator, "verification_status", c("located_official", "located_secondary", "located_secondary_only", "not_located", "scope_unresolved"), "source_locator_results")
 
 for (frame in list(claims = claims, trace = trace, binding = binding)) {
   unknown <- setdiff(frame$source_id, manifest$source_id)
   if (length(unknown) > 0) fail("Frame references unknown source_id(s):", paste(unknown, collapse = ", "))
 }
+
+unknown_locator <- setdiff(locator$target_source_id, manifest$source_id)
+if (length(unknown_locator) > 0) fail("Locator references unknown source_id(s):", paste(unknown_locator, collapse = ", "))
 
 for (frame_name in c("claims", "trace", "binding")) {
   frame <- get(frame_name)
@@ -162,6 +175,10 @@ if (any(bad_restricted)) fail("Restricted claim(s) must remain blocked_pending_s
 bad_promoted <- joined$page_binding_status != "bound" & joined$status == "ready_for_manuscript"
 if (any(bad_promoted)) fail("Unbound claim(s) marked ready_for_manuscript:", paste(joined$claim_id[bad_promoted], collapse = ", "))
 
+located_locator <- locator$verification_status %in% c("located_official", "located_secondary", "located_secondary_only")
+missing_locator_url <- located_locator & !grepl("^https?://", locator$candidate_url)
+if (any(missing_locator_url)) fail("Located locator row(s) missing candidate URL:", paste(locator$locator_id[missing_locator_url], collapse = ", "))
+
 path_ok <- grepl("^assessments/", manifest$path_or_url) | grepl("^https?://", manifest$path_or_url)
 if (any(!path_ok)) fail("Manifest path_or_url outside assessments/ or URL:", paste(manifest$source_id[!path_ok], collapse = ", "))
 
@@ -173,3 +190,4 @@ message("Manifest sources checked: ", nrow(manifest))
 message("Claim rows checked: ", nrow(claims))
 message("Official trace rows checked: ", nrow(trace))
 message("Source binding rows checked: ", nrow(binding))
+message("Locator rows checked: ", nrow(locator))
