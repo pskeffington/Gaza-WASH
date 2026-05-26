@@ -4,7 +4,11 @@ Rapid secondary-data research workspace for Gaza WASH, environmental health, dis
 
 **Maintainer:** Paul Skeffington, MS, MPH  
 **Repository status:** active rapid-assessment scaffold; all indicators require source logging and verification before manuscript-weight use.  
-**Last documentation refresh:** 2026-05-25
+**Last documentation refresh:** 2026-05-26
+
+## Current update — 2026-05-26
+
+The repository remains in source-registration, methods-design, and risk-index scaffolding mode. The immediate documentation priority is to refresh the public source register, convert `docs/data_inventory.md` into a structured manifest, and keep every WASH, health-access, displacement, and operational-access indicator tied to date-stamped source metadata before index scoring is treated as evidence.
 
 ## Working study title
 
@@ -88,4 +92,4 @@ Do not commit raw humanitarian extracts if redistribution terms are unclear. Com
 
 ## Current status
 
-Documentation refreshed on 2026-05-25. The repository remains in source-registration, methods-design, and risk-index scaffolding mode.
+Documentation refreshed on 2026-05-26. The repository remains in source-registration, methods-design, and risk-index scaffolding mode.
