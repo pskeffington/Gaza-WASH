@@ -1,0 +1,21 @@
+{
+  "schema_version": "portfolio-valuation-manifest/v1",
+  "repository": "pskeffington/Gaza-WASH",
+  "portfolio_valuator": "pskeffington/Portfolio",
+  "valuation_status": "aligned_internal_estimate",
+  "market_lane": "public-health research / emergency preparedness",
+  "maturity_stage": "active",
+  "evidence_grade": "B",
+  "product_surface": "manuscript_report_scaffold",
+  "integration_role": "humanitarian WASH methods and source-bounded public-health evidence lane",
+  "public_safety_status": "clean",
+  "risk_level": "medium",
+  "current_value_range_usd": {"low": 50000, "high": 300000},
+  "forward_value_range_usd": {"low": 500000, "high": 3000000},
+  "collateral_treatment": "Apply source provenance, validation, adoption, transferability, geopolitical, and liquidation discounts.",
+  "evidence_paths": ["README.md", "portfolio_valuation_manifest.json"],
+  "next_value_unlocks": ["complete dated source manifest", "publish methods note", "produce reproducible public-safe outputs"],
+  "missing_financial_inputs": ["revenue", "contracts", "grants", "institutional validation", "independent appraisal"],
+  "claim_boundary": "Research and documentation asset only; no field effectiveness, operational authority, funding, or institutional endorsement claim.",
+  "last_aligned_on": "2026-07-21"
+}
