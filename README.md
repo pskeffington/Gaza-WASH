@@ -1,5 +1,11 @@
 # Gaza WASH Public Health Research
 
+## Portfolio evidence review — 2026-09-17
+
+**Reviewed carry-forward.** Source registration and descriptive methods remain scaffolded. Current source verification, temporal harmonization, and a reviewed analytic packet remain open; historical project-title and risk-stratification wording must be read under the README's descriptive, non-operational boundary.
+
+Maturity and valuation ranges are unchanged. [Current review and next evidence gates](docs/valuation/2026-09-17_review.md). Dates and result claims elsewhere retain their original scope.
+
 Reproducible secondary-data research workspace for Gaza WASH conditions, environmental health, displacement, and health-system access using public humanitarian sources.
 
 **Maintainer:** Paul Skeffington, MS, MPH  

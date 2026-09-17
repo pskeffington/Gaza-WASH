@@ -1,5 +1,11 @@
 # Project Status
 
+## Current portfolio review — 2026-09-17
+
+Source registration and descriptive methods remain scaffolded. Current source verification, temporal harmonization, and a reviewed analytic packet remain open; historical project-title and risk-stratification wording must be read under the README's descriptive, non-operational boundary.
+
+[Evidence review and current next gates](docs/valuation/2026-09-17_review.md). The older project-status details below are retained as historical context; they do not override this review's valuation or claim boundaries.
+
 ## Project
 
 Gaza WASH public-health intelligence and rapid secondary-data risk-stratification workspace.
